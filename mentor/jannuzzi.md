@@ -1,8 +1,10 @@
-
-- GIT
-
+Done
+- GIT (commit/branch/merge)
 - regex
-- web scraping
+- (very basic) web scraping
 
+Next:
 cosmosdb
-code refactor
+
+code refactor + allan
+
