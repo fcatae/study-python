@@ -49,6 +49,23 @@ def enum_next_commit(commit):
     parent = commit.parents[0]
     return parent
 
+def enum_commit(commit, callback):
+    while commit != None:
+        callback(commit)
+
+        next_commit = enum_next_commit(commit)
+
+
+def show_commit(commit):
+    print_commit(commit)
+    print_filenames(commit)
+
+
+def show(repo):
+    enum_commit(repo.head.commit, show_commit)
+
+
+# Traverse files
 
 def get_commit_diff(commit):
     if(len(commit.parents) == 0):
@@ -72,28 +89,3 @@ def print_filenames(commit):
     for filename in get_commit_filenames(commit):
         print "   * " + filename
 
-
-def enum_commit(commit, callback):
-    while commit != None:
-        callback(commit)
-
-        next_commit = enum_next_commit(commit)
-
-
-def show_commit(commit):
-    print_commit(commit)
-    print_filenames(commit)
-
-
-def show(repo):
-    enum_commit(repo.head.commit, show_commit)
-
-
-# Traverse files
-
-    for item in tree.traverse():
-        print item.name
-
->>> for d in diffs:
-...   print d.a_path
-...   print d.b_path
