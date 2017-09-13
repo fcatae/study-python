@@ -55,3 +55,13 @@ def enum_commit(commit):
 
 def show_commit(repo):
     enum_commit(repo.head.commit)        
+
+
+# Traverse files
+
+    for item in tree.traverse():
+        print item.name
+
+>>> for d in diffs:
+...   print d.a_path
+...   print d.b_path
