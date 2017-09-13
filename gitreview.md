@@ -67,9 +67,13 @@ def show(repo):
 
 # Traverse files
 
+[Internal](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
+
+from git import NULL_TREE
+
 def get_commit_diff(commit):
     if(len(commit.parents) == 0):
-        return None
+        return commit.diff(NULL_TREE)        
     prev_commit = commit.parents[0]
     return commit.diff(prev_commit)
 
@@ -88,4 +92,11 @@ def get_commit_filenames(commit):
 def print_filenames(commit):
     for filename in get_commit_filenames(commit):
         print "   * " + filename
+
+
+# Folders
+
+import os
+os.chdir(path)
+os.mkdir(path)
 
